@@ -21,6 +21,11 @@ export const metadata: Metadata = {
   keywords: ["web design", "systems design", "Next.js", "performance", "agency"],
   authors: [{ name: "Web Intermix" }],
   creator: "Web Intermix",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export const viewport: Viewport = {
