@@ -1,24 +1,15 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRef, useEffect } from "react";
 import { LiquidButton } from "@/components/ui/LiquidButton";
 import { GlassCard } from "@/components/ui/GlassCard";
-import Image from "next/image";
 import { PerformanceComparison } from "@/components/showcases/PerformanceComparison";
-import { ResponsiveViewer } from "@/components/showcases/ResponsiveViewer";
 import { GoogleRankSimulator } from "@/components/showcases/GoogleRankSimulator";
 import { Interactive3DShowcase } from "@/components/showcases/Interactive3DShowcase";
-import { useCursorStore } from "@/stores/cursorStore";
+import { ArchitectTeaser } from "@/components/showcases/ArchitectTeaser";
 import { useCanvasStore } from "@/stores/canvasStore";
 import { RedAurora } from "@/components/canvas/RedAurora";
-
-const IMAGES = [
-  "/images/liquid_glass_waves.png",
-  "/images/red_geometric_core.png",
-  "/images/abstract_data_streams.png",
-  "/images/macro_hardware.png",
-];
 
 const PHILOSOPHY = [
   {
@@ -37,20 +28,11 @@ const PHILOSOPHY = [
 
 export function IndexPageClient() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const { setCursorType } = useCursorStore();
 
   useEffect(() => {
     useCanvasStore.getState().setActiveScene("index");
     return () => useCanvasStore.getState().setActiveScene("null");
   }, []);
-
-  const { scrollYProgress } = useScroll({
-    target: carouselRef,
-    offset: ["start end", "end start"]
-  });
-
-  const x = useTransform(scrollYProgress, [0, 1], ["20%", "-40%"]);
 
   return (
     <main ref={containerRef} className="w-full flex flex-col">
@@ -92,38 +74,8 @@ export function IndexPageClient() {
 
       {/* ── SHOWCASES ─────────────────────────────────────────────────────────── */}
       <PerformanceComparison />
-      <ResponsiveViewer />
       <GoogleRankSimulator />
       <Interactive3DShowcase />
-
-      {/* ── DYNAMIC SLIDESHOW ─────────────────────────────────────────────────── */}
-      <section 
-        ref={carouselRef} 
-        className="relative h-[clamp(400px,80vh,800px)] w-full overflow-hidden flex items-center bg-black/20 mt-16 cursor-none"
-        onMouseEnter={() => setCursorType("drag")}
-        onMouseLeave={() => setCursorType("default")}
-      >
-        <motion.div style={{ x }} className="flex gap-4 md:gap-8 px-6 md:px-12 pointer-events-none">
-          {IMAGES.map((src, i) => (
-            <motion.div 
-              key={i} 
-              className="relative w-[clamp(280px,70vw,600px)] md:w-[clamp(400px,40vw,800px)] h-[clamp(300px,50vh,500px)] flex-shrink-0 rounded-3xl overflow-hidden glass-panel"
-              initial={{ opacity: 0.5, filter: "blur(4px)", scale: 0.9 }}
-              whileInView={{ opacity: 1, filter: "blur(0px)", scale: 1.05 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: i * 0.1 }}
-            >
-              <Image 
-                src={src} 
-                alt={`Showcase ${i + 1}`} 
-                fill 
-                className="object-cover opacity-60 mix-blend-screen"
-                sizes="(max-width: 768px) 70vw, 40vw"
-              />
-            </motion.div>
-          ))}
-        </motion.div>
-      </section>
 
       {/* ── PHILOSOPHY GRID ───────────────────────────────────────────────────── */}
       <section className="relative w-full py-32 px-6 md:px-12 lg:px-24">
@@ -153,6 +105,9 @@ export function IndexPageClient() {
           ))}
         </motion.div>
       </section>
+
+      {/* ── ARCHITECT TEASER HOOK ────────────────────────────────────────────── */}
+      <ArchitectTeaser />
     </main>
   );
 }

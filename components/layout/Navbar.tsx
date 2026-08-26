@@ -14,9 +14,9 @@ export function Navbar() {
 
   const links = [
     { href: "/", label: "HOME" },
-    { href: "/systems", label: "SYSTEMS" },
-    { href: "/evidence", label: "EVIDENCE" },
-    { href: "/threshold", label: "THRESHOLD" },
+    { href: "/systems", label: "SERVICES" },
+    { href: "/evidence", label: "THE STANDARD" },
+    { href: "/threshold", label: "AI ARCHITECT" },
   ];
 
   return (
