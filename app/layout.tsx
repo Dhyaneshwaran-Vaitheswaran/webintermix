@@ -1,12 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Syncopate } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { ClientSingletons } from "@/components/ClientSingletons";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 
-const inter = Inter({
+const syncopate = Syncopate({
   subsets: ["latin"],
+  weight: ["400", "700"],
   display: "swap",
   preload: true,
 });
@@ -43,7 +44,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={inter.className}
+      className={syncopate.className}
       suppressHydrationWarning
     >
       <body className="bg-black text-white antialiased overflow-x-hidden tracking-tight cursor-none">

@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import { HTMLMotionProps, motion } from "framer-motion";
 import Link from "next/link";
+import { useCursorStore } from "@/stores/cursorStore";
 
 interface LiquidButtonProps extends Omit<HTMLMotionProps<"button">, "children"> {
   href?: string;
@@ -13,6 +14,7 @@ export function LiquidButton({ href, children, className = "", ...props }: Liqui
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isMobile, setIsMobile] = useState(false);
+  const { setCursorType } = useCursorStore();
 
   useEffect(() => {
     const media = window.matchMedia("(hover: none)");
@@ -31,14 +33,20 @@ export function LiquidButton({ href, children, className = "", ...props }: Liqui
     setPosition({ x: middleX * 0.2, y: middleY * 0.2 });
   };
 
+  const handleMouseEnter = () => {
+    setCursorType("button");
+  };
+
   const reset = () => {
     setPosition({ x: 0, y: 0 });
+    setCursorType("default");
   };
 
   const buttonContent = (
     <div 
       ref={ref}
       onMouseMove={handleMouse}
+      onMouseEnter={handleMouseEnter}
       onMouseLeave={reset}
       className="relative inline-block p-4"
     >

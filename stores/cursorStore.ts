@@ -2,12 +2,14 @@
 
 import { create } from "zustand";
 
+export type CursorType = "default" | "button" | "drag";
+
 export interface CursorState {
-  isHovering: boolean;
-  setIsHovering: (hover: boolean) => void;
+  cursorType: CursorType;
+  setCursorType: (type: CursorType) => void;
 }
 
 export const useCursorStore = create<CursorState>((set) => ({
-  isHovering: false,
-  setIsHovering: (hover) => set({ isHovering: hover }),
+  cursorType: "default",
+  setCursorType: (type) => set({ cursorType: type }),
 }));

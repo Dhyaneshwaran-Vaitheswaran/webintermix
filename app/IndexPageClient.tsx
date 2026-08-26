@@ -1,12 +1,14 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { LiquidButton } from "@/components/ui/LiquidButton";
 import { GlassCard } from "@/components/ui/GlassCard";
 import Image from "next/image";
 import { PerformanceComparison } from "@/components/showcases/PerformanceComparison";
 import { ResponsiveViewer } from "@/components/showcases/ResponsiveViewer";
+import { useCursorStore } from "@/stores/cursorStore";
+import { useCanvasStore } from "@/stores/canvasStore";
 import { RedAurora } from "@/components/canvas/RedAurora";
 
 const IMAGES = [
@@ -34,6 +36,12 @@ const PHILOSOPHY = [
 export function IndexPageClient() {
   const containerRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const { setCursorType } = useCursorStore();
+
+  useEffect(() => {
+    useCanvasStore.getState().setActiveScene("index");
+    return () => useCanvasStore.getState().setActiveScene("null");
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: carouselRef,
@@ -54,10 +62,10 @@ export function IndexPageClient() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col items-center"
         >
-          <h1 className="text-4xl md:text-6xl lg:text-[10rem] font-black uppercase tracking-tighter glass-text mb-4 select-none relative z-10">
+          <h1 className="text-4xl md:text-6xl lg:text-[8rem] font-black uppercase tracking-tighter glass-text mb-4 select-none relative z-10">
             FLUID INFRASTRUCTURE<span className="text-[#FF3B3B] inline-block mix-blend-normal relative z-20">.</span>
           </h1>
-          <p className="text-xl md:text-2xl text-white/60 max-w-3xl mt-4 mb-12 font-light leading-relaxed select-none">
+          <p className="text-xs md:text-sm text-white/70 max-w-3xl mt-6 mb-12 font-bold tracking-[0.3em] leading-loose uppercase select-none drop-shadow-md">
             Digital systems engineered for trust. We build seamless, invisible infrastructure that commands confidence and drives measurable growth.
           </p>
           <LiquidButton href="/threshold">INITIALIZE TRANSMISSION</LiquidButton>
@@ -74,7 +82,7 @@ export function IndexPageClient() {
           transition={{ duration: 0.8 }}
           className="max-w-4xl text-center"
         >
-          <p className="text-lg md:text-xl lg:text-2xl text-white/40 font-mono leading-relaxed select-none">
+          <p className="text-sm md:text-base text-[#FF3B3B]/60 font-bold tracking-[0.2em] leading-loose uppercase select-none drop-shadow-sm">
             We reject the bloated, template-driven status quo. Our engineering philosophy is rooted in atomic architecture and fluid physics. By offloading heavy processing and optimizing the critical rendering path, we construct digital environments that feel less like websites and more like native, high-performance operating systems. The result is an invisible infrastructure that silently builds absolute user trust.
           </p>
         </motion.div>
@@ -85,8 +93,13 @@ export function IndexPageClient() {
       <ResponsiveViewer />
 
       {/* ── DYNAMIC SLIDESHOW ─────────────────────────────────────────────────── */}
-      <section ref={carouselRef} className="relative h-[clamp(400px,80vh,800px)] w-full overflow-hidden flex items-center bg-black/20 mt-16">
-        <motion.div style={{ x }} className="flex gap-4 md:gap-8 px-6 md:px-12">
+      <section 
+        ref={carouselRef} 
+        className="relative h-[clamp(400px,80vh,800px)] w-full overflow-hidden flex items-center bg-black/20 mt-16 cursor-none"
+        onMouseEnter={() => setCursorType("drag")}
+        onMouseLeave={() => setCursorType("default")}
+      >
+        <motion.div style={{ x }} className="flex gap-4 md:gap-8 px-6 md:px-12 pointer-events-none">
           {IMAGES.map((src, i) => (
             <motion.div 
               key={i} 
