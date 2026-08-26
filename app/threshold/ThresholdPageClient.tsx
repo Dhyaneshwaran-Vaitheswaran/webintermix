@@ -16,41 +16,41 @@ const FIELDS = [
   },
   {
     id: "company",
-    label: "02. Company",
+    label: "02. Business / Brand Name",
     type: "text",
-    placeholder: "Acme Corp",
+    placeholder: "Acme Brand",
     tag: "input",
   },
   {
     id: "email",
-    label: "03. Email",
+    label: "03. Your Email Address",
     type: "email",
     placeholder: "jane@acme.com",
     tag: "input",
   },
   {
     id: "challenge",
-    label: "04. Describe the System Failure",
+    label: "04. Tell Us About Your Project & Goals",
     type: "text",
-    placeholder: "We need to decouple our monolithic state...",
+    placeholder: "We want a sleek new website with 3D product visuals and better Google rankings...",
     tag: "textarea",
   },
 ] as const;
 
 const SELECT_OPTIONS = {
   budget: [
-    { value: "", label: "Select budget range" },
-    { value: "under-25k", label: "< $25K" },
-    { value: "25-100k", label: "$25K – $100K" },
-    { value: "100-500k", label: "$100K – $500K" },
-    { value: "500k+", label: "$500K+" },
+    { value: "", label: "Select estimated budget" },
+    { value: "under-5k", label: "< $5,000" },
+    { value: "5-15k", label: "$5,000 – $15,000" },
+    { value: "15-35k", label: "$15,000 – $35,000" },
+    { value: "35k+", label: "$35,000+" },
   ],
   timeline: [
-    { value: "", label: "Select timeline" },
-    { value: "under-1m", label: "< 1 Month" },
+    { value: "", label: "Select desired timeline" },
+    { value: "asap", label: "As Soon As Possible" },
+    { value: "under-1m", label: "Within 1 Month" },
     { value: "1-3m", label: "1 – 3 Months" },
-    { value: "3-6m", label: "3 – 6 Months" },
-    { value: "6m+", label: "6+ Months" },
+    { value: "flexible", label: "Flexible Timeline" },
   ],
 };
 
@@ -64,7 +64,7 @@ export function ThresholdPageClient() {
     challenge: "",
     budget: "",
     timeline: "",
-    objective: "discovery",
+    objective: "website",
   });
   const [submitted, setSubmitted] = useState(false);
   const [focusedField, setFocusedField] = useState<string | null>(null);
@@ -115,17 +115,17 @@ export function ThresholdPageClient() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.8 }}
                 >
-                  <p className="text-[#FF3B3B] text-xs tracking-[0.4em] uppercase font-mono mb-4">
-                    ◆ Intake Protocol v2.1
+                  <p className="text-[#FF3B3B] text-xs tracking-[0.3em] uppercase font-mono mb-4">
+                    ◆ START YOUR PROJECT
                   </p>
-                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter text-white leading-none">
-                    THE
+                  <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tight text-white leading-none">
+                    LET&apos;S BUILD
                     <br />
-                    <span className="text-clip-gradient">THRESHOLD</span>
+                    <span className="text-clip-gradient">SOMETHING GREAT</span>
                     <span className="text-[#FF3B3B]">.</span>
                   </h1>
-                  <p className="text-white/30 text-sm mt-4 tracking-widest uppercase font-mono">
-                    Tell us what&apos;s broken. We&apos;ll tell you if we can fix it.
+                  <p className="text-[#888888] text-base mt-4 font-sans leading-relaxed">
+                    Tell us about your project goals. We&apos;ll review your details and reach out within 24 hours with a custom plan.
                   </p>
                 </motion.div>
 
@@ -139,7 +139,7 @@ export function ThresholdPageClient() {
                   <form
                     ref={formRef}
                     onSubmit={handleSubmit}
-                    className="flex flex-col gap-8 md:gap-16"
+                    className="flex flex-col gap-8 md:gap-14"
                   >
                     {/* ── Objective Selection ── */}
                     <motion.div
@@ -148,14 +148,15 @@ export function ThresholdPageClient() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                     >
-                      <p className="text-xs text-white/30 tracking-[0.3em] uppercase font-mono mb-6">
-                        00. Primary Objective
+                      <p className="text-xs text-white/40 tracking-[0.2em] uppercase font-mono mb-4">
+                        00. What type of project do you need?
                       </p>
-                      <div className="flex flex-col md:flex-row gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {[
-                          { id: "discovery", label: "Schedule Discovery Session" },
-                          { id: "audit", label: "Request Architecture Audit" },
-                          { id: "software", label: "Custom Software / Commerce Engine" }
+                          { id: "website", label: "Custom Website" },
+                          { id: "ecommerce", label: "E-Commerce Store" },
+                          { id: "3d", label: "3D Visuals & Modeling" },
+                          { id: "seo", label: "Google SEO Growth" }
                         ].map((obj) => {
                           const isActive = formData.objective === obj.id;
                           return (
@@ -163,20 +164,20 @@ export function ThresholdPageClient() {
                               key={obj.id}
                               type="button"
                               onClick={() => setFormData(prev => ({ ...prev, objective: obj.id }))}
-                              className={`flex-1 px-4 py-6 rounded-xl border transition-all duration-300 relative overflow-hidden group flex items-center justify-center ${
+                              className={`px-4 py-4 rounded-xl border transition-all duration-300 relative overflow-hidden group flex items-center justify-center ${
                                 isActive 
-                                  ? "bg-[#FF3B3B]/5 border-[#FF3B3B]/50 shadow-[0_0_20px_rgba(255,59,59,0.1)]" 
-                                  : "bg-white/[0.02] border-white/5 hover:border-white/20 hover:bg-white/[0.05]"
+                                  ? "bg-[#FF3B3B]/10 border-[#FF3B3B]/60 shadow-[0_0_20px_rgba(255,59,59,0.15)]" 
+                                  : "bg-white/[0.02] border-white/10 hover:border-white/25 hover:bg-white/[0.05]"
                               }`}
                             >
-                              <span className={`text-xs md:text-sm tracking-[0.2em] uppercase font-mono relative z-10 transition-colors duration-300 text-center ${
-                                isActive ? "text-[#FF3B3B] font-bold" : "text-white/40 group-hover:text-white/80"
+                              <span className={`text-xs md:text-sm tracking-wider uppercase font-bold relative z-10 transition-colors duration-300 text-center ${
+                                isActive ? "text-[#FF3B3B]" : "text-white/60 group-hover:text-white"
                               }`}>
                                 {obj.label}
                               </span>
                               {isActive && (
                                 <motion.div 
-                                  className="absolute inset-0 bg-gradient-to-t from-[#FF3B3B]/10 to-transparent pointer-events-none"
+                                  className="absolute inset-0 bg-gradient-to-t from-[#FF3B3B]/15 to-transparent pointer-events-none"
                                   initial={{ opacity: 0 }}
                                   animate={{ opacity: 1 }}
                                 />
@@ -378,8 +379,8 @@ export function ThresholdPageClient() {
                             }}
                           />
 
-                          <span className="relative z-10 text-2xl md:text-3xl font-black uppercase tracking-tighter text-white transition-colors duration-300">
-                            INITIALIZE TRANSMISSION
+                          <span className="relative z-10 text-xl md:text-2xl font-black uppercase tracking-tight text-white transition-colors duration-300">
+                            SEND PROJECT INQUIRY
                           </span>
 
                           {/* Animated arrow */}
@@ -415,8 +416,8 @@ export function ThresholdPageClient() {
                         />
                       </motion.button>
 
-                      <p className="text-center text-white/20 text-xs mt-4 tracking-widest uppercase font-mono">
-                        Encrypted · Zero log · Response within 24h
+                      <p className="text-center text-white/40 text-xs mt-4 tracking-wider uppercase font-mono">
+                        No obligations · Fast response within 24 hours
                       </p>
                     </motion.div>
                   </form>
@@ -430,10 +431,10 @@ export function ThresholdPageClient() {
                 animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               >
-                <GlassCard className="text-center py-24 flex flex-col items-center shadow-[0_0_80px_rgba(255,59,59,0.08)]">
+                <GlassCard className="text-center py-20 px-8 flex flex-col items-center shadow-[0_0_80px_rgba(255,59,59,0.08)]">
                   {/* Animated check */}
                   <motion.div
-                    className="w-20 h-20 rounded-full border border-[#FF3B3B]/50 bg-[#FF3B3B]/5 flex items-center justify-center mb-10 shadow-[0_0_40px_rgba(255,59,59,0.2)]"
+                    className="w-20 h-20 rounded-full border border-[#FF3B3B]/50 bg-[#FF3B3B]/5 flex items-center justify-center mb-8 shadow-[0_0_40px_rgba(255,59,59,0.2)]"
                     initial={{ scale: 0, rotate: -90 }}
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{
@@ -458,45 +459,40 @@ export function ThresholdPageClient() {
                   </motion.div>
 
                   <motion.p
-                    className="text-[#FF3B3B] text-xs tracking-[0.4em] uppercase font-mono mb-4"
+                    className="text-[#FF3B3B] text-xs tracking-[0.3em] uppercase font-mono mb-4"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.4 }}
                   >
-                    ◆ Signal Received
+                    ◆ Message Received
                   </motion.p>
 
                   <motion.h2
-                    className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-white mb-6 leading-none"
+                    className="text-4xl md:text-6xl font-black uppercase tracking-tight text-white mb-6 leading-none"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5, duration: 0.8 }}
                   >
-                    TRANSMISSION
-                    <br />
-                    <span className="text-clip-gradient">SENT</span>
-                    <span className="text-[#FF3B3B]">.</span>
+                    THANK YOU<span className="text-[#FF3B3B]">.</span>
                   </motion.h2>
 
                   <motion.p
-                    className="text-white/40 text-base max-w-sm mx-auto mb-12 leading-relaxed"
+                    className="text-white/60 text-base max-w-md mx-auto mb-10 leading-relaxed font-sans"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.65 }}
                   >
-                    Your architectural parameters have been received and
-                    encrypted. Our engineers will establish contact within 24
-                    hours.
+                    We&apos;ve received your project inquiry. Our team will review your requirements and reach out within 24 hours to schedule a quick discovery call.
                   </motion.p>
 
                   <motion.a
                     href="/"
-                    className="text-sm tracking-widest uppercase font-mono text-white/40 hover:text-[#FF3B3B] transition-colors duration-300 border-b border-white/10 hover:border-[#FF3B3B]/50 pb-1"
+                    className="text-xs tracking-widest uppercase font-mono text-white/50 hover:text-[#FF3B3B] transition-colors duration-300 border-b border-white/10 hover:border-[#FF3B3B]/50 pb-1"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.8 }}
                   >
-                    ← Return to Base
+                    ← Return to Homepage
                   </motion.a>
                 </GlassCard>
               </motion.div>

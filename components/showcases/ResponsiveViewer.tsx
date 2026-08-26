@@ -26,10 +26,10 @@ export function ResponsiveViewer() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white mb-4">
-            Adaptive <span className="text-[#FF3B3B]">Geometry</span>
+            Flawless On <span className="text-[#FF3B3B]">Every Screen</span>
           </h2>
-          <p className="text-[#888888] text-lg max-w-2xl mx-auto mb-8">
-            Our interfaces gracefully reflow across any viewport, maintaining performance and aesthetic integrity.
+          <p className="text-[#888888] text-base md:text-lg max-w-2xl mx-auto mb-8 font-sans">
+            Over 60% of your potential customers visit on their phones. Every website we build is fine-tuned to feel fast, fluid, and intuitive on mobile, tablet, and desktop.
           </p>
 
           {/* Controls */}

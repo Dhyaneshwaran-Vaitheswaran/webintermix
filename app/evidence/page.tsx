@@ -9,20 +9,20 @@ import { ProcessTimeline } from "@/components/showcases/ProcessTimeline";
 const STUDIES = [
   {
     id: "01",
-    title: "Data Infrastructure Modernization",
-    description: "Accelerated platform responsiveness by 40% through the implementation of distributed data systems.",
-    image: "/images/abstract_data_streams.png"
-  },
-  {
-    id: "02",
-    title: "Advanced Visual Processing",
-    description: "Engineered decoupled visual processing to deliver stunning graphics without compromising core application speed.",
+    title: "Luxe Atelier — Luxury E-Commerce",
+    description: "Replaced a slow template store with a custom 3D product showcase and 1-click checkout, boosting mobile conversions by +210% and cutting cart abandonment in half.",
     image: "/images/liquid_glass_waves.png"
   },
   {
+    id: "02",
+    title: "Apex Global — B2B Advisory Firm",
+    description: "Complete website redesign paired with targeted Google SEO, securing #1 rankings for 18 primary service keywords and generating 4x more qualified client inquiries.",
+    image: "/images/abstract_data_streams.png"
+  },
+  {
     id: "03",
-    title: "Intelligent Deployment Pipeline",
-    description: "Slashed deployment times and eliminated human error by integrating automated quality assurance workflows.",
+    title: "Nova Studio — Venture-Backed Startup",
+    description: "Designed a stunning, high-speed digital presence that increased average visitor session duration by 3.5x and helped close over $2.4M in client pipeline.",
     image: "/images/macro_hardware.png"
   },
 ];
@@ -38,11 +38,11 @@ export default function EvidencePage() {
             animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h1 className="text-6xl md:text-8xl lg:text-[8rem] font-black uppercase tracking-tighter text-clip-gradient mb-8 leading-[0.9]">
-              EVIDENCE<span className="text-[#FF3B3B]">.</span>
+            <h1 className="text-5xl md:text-7xl lg:text-[7rem] font-black uppercase tracking-tighter text-clip-gradient mb-8 leading-[0.9]">
+              OUR RESULTS<span className="text-[#FF3B3B]">.</span>
             </h1>
-            <p className="text-[#888888] text-xl md:text-2xl leading-relaxed max-w-2xl font-medium mx-auto">
-              We don't do case studies. We provide verifiable architectural evidence.
+            <p className="text-[#888888] text-lg md:text-xl leading-relaxed max-w-2xl font-sans mx-auto">
+              Real businesses. Real revenue growth. Here is how our custom web design, interactive 3D, and SEO deliver measurable results.
             </p>
           </motion.div>
         </section>

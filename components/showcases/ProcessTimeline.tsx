@@ -7,33 +7,33 @@ import { GlassCard } from "@/components/ui/GlassCard";
 const STEPS = [
   {
     id: "01",
-    title: "DISCOVERY & STRATEGY",
-    details: "We map your operational workflows and business objectives. We define the scalable foundations and routing strategies needed to ensure high-speed global delivery.",
-    deliverables: ["Strategic Blueprint", "Operational Roadmap", "Risk Analysis"]
+    title: "DISCOVERY & GOALS",
+    details: "We start with a friendly strategy session to understand your business, target audience, and revenue goals. We create a clear roadmap and outline the exact features your new website needs.",
+    deliverables: ["Project Roadmap", "Competitor Review", "Feature Outline"]
   },
   {
     id: "02",
-    title: "STRUCTURAL WIREFRAMING",
-    details: "Strategic layout without visual distraction. We ensure the user journey flows flawlessly to maximize conversion and operational efficiency.",
-    deliverables: ["User Flow Prototypes", "Data Integration Plan", "Structural Wireframes"]
+    title: "CUSTOM DESIGN & 3D",
+    details: "We craft custom, high-fidelity design mockups and interactive 3D visuals tailored to your brand identity. You get to review and approve everything before development begins.",
+    deliverables: ["Interactive Prototypes", "3D Visual Assets", "Style Guide"]
   },
   {
     id: "03",
-    title: "BRAND DESIGN SYSTEM",
-    details: "We establish the visual authority. Colors, typography, and spacing are standardized for infinite scalability and absolute brand consistency.",
-    deliverables: ["Design System", "Component Library", "Interactive Guidelines"]
+    title: "LIGHTNING-FAST BUILD",
+    details: "We turn the approved designs into a responsive, high-speed website that loads instantly and works flawlessly across mobile phones, tablets, and computers.",
+    deliverables: ["Custom Web Build", "Mobile Optimization", "CMS Integration"]
   },
   {
     id: "04",
-    title: "PLATFORM DEVELOPMENT",
-    details: "The core engineering phase. We build immersive visual experiences and deploy robust infrastructure for flawless, zero-delay operations.",
-    deliverables: ["Production Platform", "Visual Enhancements", "Cloud Infrastructure"]
+    title: "GOOGLE SEO & TESTING",
+    details: "We optimize your website structure for Google search rankings, configure metadata, and run thorough speed and security audits so launch day is 100% smooth.",
+    deliverables: ["SEO Setup", "Speed Audit", "Cross-Device Testing"]
   },
   {
     id: "05",
-    title: "QUALITY ASSURANCE & LAUNCH",
-    details: "Rigorous load testing, usability audits, and security verification. We launch only when the platform is proven to handle intense, sustained user demand.",
-    deliverables: ["Quality Report", "Security Verification", "Live Deployment"]
+    title: "LAUNCH & ONGOING PEACE OF MIND",
+    details: "We take your site live, connect your custom domain, and handle all hosting and maintenance details so you can focus on running your business with zero tech stress.",
+    deliverables: ["Live Launch", "Domain & Hosting Setup", "Ongoing Support"]
   }
 ];
 
@@ -51,10 +51,10 @@ export function ProcessTimeline() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white mb-4">
-            The <span className="text-[#FF3B3B]">Process</span>
+            How We <span className="text-[#FF3B3B]">Work</span>
           </h2>
-          <p className="text-[#888888] text-lg max-w-2xl mx-auto">
-            A deterministic, 5-phase protocol designed to eliminate risk and guarantee results.
+          <p className="text-[#888888] text-base md:text-lg max-w-2xl mx-auto font-sans">
+            A simple, transparent 5-step journey from initial idea to high-converting live website.
           </p>
         </motion.div>
 

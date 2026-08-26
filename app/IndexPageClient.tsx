@@ -20,16 +20,16 @@ const IMAGES = [
 
 const PHILOSOPHY = [
   {
-    title: "Seamless Data Synchronization",
-    desc: "We build digital infrastructure that flows smoothly between systems. Our platforms adapt to intense load requirements effortlessly, ensuring your business operations never miss a beat."
+    title: "Custom Web & E-Commerce",
+    desc: "High-speed, stunning websites and online stores crafted to turn casual visitors into loyal, paying customers."
   },
   {
-    title: "Interactive Readiness",
-    desc: "By optimizing delivery and pushing processing to the edge, we guarantee instant responses. Your users experience flawless interaction from the very first click."
+    title: "Interactive 3D & Visuals",
+    desc: "Eye-catching 3D models and smooth animations that make your brand stand out and leave an unforgettable impression."
   },
   {
-    title: "Immersive Digital Experiences",
-    desc: "We utilize advanced visual rendering to craft visceral, fluid digital environments. Our platforms command attention while maintaining absolute technical stability."
+    title: "Google SEO & Growth",
+    desc: "Targeted search optimization and high-speed architecture to put your business in front of customers actively searching for you."
   }
 ];
 
@@ -57,19 +57,19 @@ export function IndexPageClient() {
         <RedAurora />
         <div className="relative z-10 flex flex-col items-center w-full">
           <motion.div 
-          initial={{ opacity: 0, filter: "blur(10px)", y: 40 }} 
-          animate={{ opacity: 1, filter: "blur(0px)", y: 0 }} 
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-center"
-        >
-          <h1 className="text-4xl md:text-6xl lg:text-[8rem] font-black uppercase tracking-tighter glass-text mb-4 select-none relative z-10">
-            FLUID INFRASTRUCTURE<span className="text-[#FF3B3B] inline-block mix-blend-normal relative z-20">.</span>
-          </h1>
-          <p className="text-xs md:text-sm text-white/70 max-w-3xl mt-6 mb-12 font-bold tracking-[0.3em] leading-loose uppercase select-none drop-shadow-md">
-            Digital systems engineered for trust. We build seamless, invisible infrastructure that commands confidence and drives measurable growth.
-          </p>
-          <LiquidButton href="/threshold">INITIALIZE TRANSMISSION</LiquidButton>
-        </motion.div>
+            initial={{ opacity: 0, filter: "blur(10px)", y: 40 }} 
+            animate={{ opacity: 1, filter: "blur(0px)", y: 0 }} 
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col items-center"
+          >
+            <h1 className="text-3xl md:text-5xl lg:text-7xl font-black uppercase tracking-tight glass-text mb-6 select-none relative z-10 max-w-6xl leading-[1.1]">
+              WEBSITES DESIGNED TO TURN HEADS & WIN CLIENTS<span className="text-[#FF3B3B] inline-block mix-blend-normal relative z-20">.</span>
+            </h1>
+            <p className="text-xs md:text-sm text-white/80 max-w-3xl mt-2 mb-12 font-bold tracking-[0.2em] leading-relaxed uppercase select-none drop-shadow-md">
+              Modern web design, custom 3D graphics, and built-in SEO tailored to help your business make a lasting impression and convert visitors into paying clients.
+            </p>
+            <LiquidButton href="/systems">SEE OUR SERVICES</LiquidButton>
+          </motion.div>
         </div>
       </section>
 
@@ -82,8 +82,8 @@ export function IndexPageClient() {
           transition={{ duration: 0.8 }}
           className="max-w-4xl text-center"
         >
-          <p className="text-sm md:text-base text-[#FF3B3B]/60 font-bold tracking-[0.2em] leading-loose uppercase select-none drop-shadow-sm">
-            We reject the bloated, template-driven status quo. Our engineering philosophy is rooted in atomic architecture and fluid physics. By offloading heavy processing and optimizing the critical rendering path, we construct digital environments that feel less like websites and more like native, high-performance operating systems. The result is an invisible infrastructure that silently builds absolute user trust.
+          <p className="text-sm md:text-base text-white/70 font-bold tracking-[0.15em] leading-loose uppercase select-none drop-shadow-sm">
+            Most websites look generic and get lost in Google search. We create bespoke websites with custom 3D visuals and built-in SEO that immediately build trust with your visitors and turn them into paying clients — without any technical headache for you.
           </p>
         </motion.div>
       </section>
@@ -142,8 +142,8 @@ export function IndexPageClient() {
               }}
             >
               <GlassCard className="h-full flex flex-col justify-between group">
-                <h3 className="text-2xl font-bold tracking-tight mb-8 text-white">{item.title}</h3>
-                <p className="text-[#888888] leading-relaxed group-hover:text-white/80 transition-colors duration-500">{item.desc}</p>
+                <h3 className="text-xl font-bold tracking-tight mb-6 text-white uppercase">{item.title}</h3>
+                <p className="text-[#888888] leading-relaxed group-hover:text-white/90 transition-colors duration-500 font-sans normal-case text-sm md:text-base">{item.desc}</p>
               </GlassCard>
             </motion.div>
           ))}

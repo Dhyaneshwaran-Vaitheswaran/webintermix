@@ -6,70 +6,36 @@ import { GlassCard } from "@/components/ui/GlassCard";
 
 const TABS = [
   {
-    id: "inventory",
-    label: "01. Inventory Sync",
-    code: `async function syncEdgeInventory(skus: string[]) {
-  const store = await getAtomicStore('inventory');
-  
-  // Predict demand and pre-warm edge cache
-  const demandGraph = await ai.analyze(skus);
-  
-  return store.distribute(skus, {
-    strategy: 'geo-proximity',
-    latencyTarget: '< 50ms',
-    fallback: 'origin-main'
-  });
-}`,
-    metric: "42ms Sync Time"
+    id: "speed",
+    label: "01. Instant Speed",
+    title: "Sub-Second Global Load Times",
+    description: "Studies show that a 1-second delay reduces conversions by 7%. We build lightweight, edge-accelerated websites that load instantaneously for every visitor, anywhere in the world.",
+    highlights: ["Global Content Delivery Network", "Automated Image Compression", "Zero Lag Interactive Elements"],
+    metric: "< 0.2s Page Load"
   },
   {
-    id: "routing",
-    label: "02. Edge Routing",
-    code: `export const config = {
-  runtime: 'edge',
-  regions: ['iad1', 'sfo1', 'fra1', 'hnd1']
-};
-
-export default function EdgeRouter(req: Request) {
-  const { country, city } = req.geo;
-  const optimalNode = getNearestNode(country, city);
-  
-  return Response.redirect(optimalNode.url, 302);
-}`,
-    metric: "99.999% Uptime"
+    id: "seo",
+    label: "02. Google SEO Ready",
+    title: "Engineered For Search Dominance",
+    description: "Google prioritizes websites with clean code, fast response times, and semantic structure. We implement automated sitemaps, rich schema snippets, and metadata that help you climb search rankings.",
+    highlights: ["Structured Schema Markup", "Automated Meta Tags & Sitemaps", "Core Web Vitals Optimization"],
+    metric: "100/100 SEO Score"
   },
   {
-    id: "analytics",
-    label: "03. Atomic Analytics",
-    code: `// Zero-latency event streaming
-const eventStream = new AtomicStream('user_actions');
-
-eventStream.on('purchase', (event) => {
-  // Fire and forget to data warehouse
-  BigQuery.insertAsync('transactions', event);
-  
-  // Immediately update real-time dashboard
-  Redis.incr(\`revenue:\${event.region}\`, event.amount);
-});`,
-    metric: "0ms UI Blocking"
+    id: "mobile",
+    label: "03. Mobile Checkout",
+    title: "Frictionless Sales & Lead Capture",
+    description: "Capture leads and sales on the first visit with streamlined forms and 1-click payment integrations (Apple Pay, Google Pay, and Stripe) designed specifically for mobile shoppers.",
+    highlights: ["1-Click Apple & Google Pay", "Instant Form Validation", "High-Converting Layouts"],
+    metric: "2.5x Higher Conversion"
   },
   {
-    id: "order",
-    label: "04. Order Flow",
-    code: `function processOrder(cart: Cart) {
-  return db.transaction(async (tx) => {
-    // Optimistic locking for high-concurrency
-    const lock = await tx.acquireLock(cart.items);
-    
-    if (!lock) throw new Error('Inventory conflict');
-    
-    await tx.deduct(cart.items);
-    await tx.charge(cart.payment);
-    
-    return tx.commit();
-  });
-}`,
-    metric: "10k TPS Capable"
+    id: "security",
+    label: "04. Enterprise Security",
+    title: "Bank-Grade Stability & Protection",
+    description: "Rest easy knowing your website and client data are shielded with automated SSL encryption, DDoS protection, and continuous automated backups.",
+    highlights: ["Automated Daily Backups", "End-to-End SSL Encryption", "99.99% Guaranteed Uptime"],
+    metric: "99.99% Uptime"
   }
 ];
 
@@ -89,10 +55,10 @@ export function CommerceEngineExplorer() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white mb-4 select-none">
-            Commerce <span className="text-[#FF3B3B]">Engine</span>
+            Built For <span className="text-[#FF3B3B]">Growth</span>
           </h2>
-          <p className="text-[#888888] text-lg max-w-2xl mx-auto select-none">
-            Explore the robust foundation that powers our high-performance digital platforms.
+          <p className="text-[#888888] text-base md:text-lg max-w-2xl mx-auto select-none font-sans">
+            Every technical detail is optimized behind the scenes so your website consistently turns traffic into revenue.
           </p>
         </motion.div>
 
@@ -103,7 +69,7 @@ export function CommerceEngineExplorer() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="w-full max-w-5xl"
         >
-          <GlassCard className="p-8 md:p-12 overflow-hidden flex flex-col min-h-[500px]">
+          <GlassCard className="p-8 md:p-12 overflow-hidden flex flex-col min-h-[460px]">
             {/* Top Tabs */}
             <div className="w-full flex flex-wrap justify-center items-center gap-2 mb-10 border-b border-white/5 pb-8">
               {TABS.map((tab) => (
@@ -130,19 +96,31 @@ export function CommerceEngineExplorer() {
                   animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   exit={{ opacity: 0, y: -10, filter: "blur(5px)" }}
                   transition={{ duration: 0.4 }}
-                  className="w-full max-w-3xl flex flex-col items-center"
+                  className="w-full max-w-3xl flex flex-col items-start text-left"
                 >
-                  <div className="mb-6 flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-[#FF3B3B] animate-pulse" />
-                    <span className="font-mono text-[#FF3B3B] tracking-widest uppercase text-sm">
-                      {activeContent.metric}
-                    </span>
+                  <div className="mb-6 flex items-center justify-between w-full border-b border-white/10 pb-4">
+                    <h3 className="text-xl md:text-2xl font-bold uppercase tracking-tight text-white">
+                      {activeContent.title}
+                    </h3>
+                    <div className="flex items-center gap-3 bg-[#FF3B3B]/10 border border-[#FF3B3B]/30 px-4 py-1.5 rounded-full">
+                      <div className="w-2 h-2 rounded-full bg-[#FF3B3B] animate-pulse" />
+                      <span className="font-mono text-[#FF3B3B] tracking-widest uppercase text-xs md:text-sm font-bold">
+                        {activeContent.metric}
+                      </span>
+                    </div>
                   </div>
                   
-                  <div className="bg-[#0A0A0A] border border-white/10 rounded-xl p-6 overflow-x-auto shadow-inner w-full text-left">
-                    <pre className="font-mono text-sm leading-relaxed text-white/80">
-                      <code>{activeContent.code}</code>
-                    </pre>
+                  <p className="text-[#888888] leading-relaxed text-base md:text-lg mb-8 font-sans">
+                    {activeContent.description}
+                  </p>
+
+                  <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {activeContent.highlights.map((item, idx) => (
+                      <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-4 flex items-center gap-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#FF3B3B] shrink-0" />
+                        <span className="text-xs font-mono uppercase tracking-wider text-white/90">{item}</span>
+                      </div>
+                    ))}
                   </div>
                 </motion.div>
               </AnimatePresence>

@@ -18,10 +18,10 @@ export function PerformanceComparison() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white mb-4 select-none">
-            The Engine <span className="text-[#FF3B3B]">Advantage</span>
+            The Performance <span className="text-[#FF3B3B]">Difference</span>
           </h2>
-          <p className="text-[#888888] text-lg max-w-2xl mx-auto select-none">
-            Hover to reveal the performance disparity between standard architectures and the Web Intermix platform.
+          <p className="text-[#888888] text-base md:text-lg max-w-2xl mx-auto select-none font-sans">
+            Hover to see why custom-crafted websites dramatically outperform generic templates in search rank, speed, and sales conversions.
           </p>
         </motion.div>
 
@@ -46,14 +46,14 @@ export function PerformanceComparison() {
                   animate={{ opacity: isHovered ? 0 : 1 }}
                   transition={{ duration: 0.8, ease: "easeInOut" }}
                 >
-                  <h3 className="text-xl font-bold text-white/50 uppercase tracking-widest border-b border-white/10 pb-4">
-                    Standard Agency Build
+                  <h3 className="text-lg md:text-xl font-bold text-white/50 uppercase tracking-widest border-b border-white/10 pb-4">
+                    Generic Template Website
                   </h3>
                   <div className="space-y-4">
-                    <MetricRow label="Lighthouse Score" value="42" color="text-red-500" />
-                    <MetricRow label="Server Response Time" value="1.8s" color="text-yellow-500" />
-                    <MetricRow label="Platform Weight" value="4.2MB" color="text-red-500" />
-                    <MetricRow label="Interactive Readiness" value="High Lag" color="text-yellow-500" />
+                    <MetricRow label="Google SEO Score" value="42 / 100" color="text-red-500" />
+                    <MetricRow label="Page Load Time" value="3.8s (Slow)" color="text-red-500" />
+                    <MetricRow label="Mobile Experience" value="Clunky & Laggy" color="text-yellow-500" />
+                    <MetricRow label="Visitor Conversion" value="Under 1%" color="text-red-500" />
                   </div>
                 </motion.div>
 
@@ -64,14 +64,14 @@ export function PerformanceComparison() {
                   animate={{ opacity: isHovered ? 1 : 0 }}
                   transition={{ duration: 0.8, ease: "easeInOut" }}
                 >
-                  <h3 className="text-xl font-bold text-white uppercase tracking-widest border-b border-[#FF3B3B]/50 pb-4">
-                    Web Intermix Platform
+                  <h3 className="text-lg md:text-xl font-bold text-white uppercase tracking-widest border-b border-[#FF3B3B]/50 pb-4">
+                    Web Intermix Custom Build
                   </h3>
                   <div className="space-y-4">
-                    <MetricRow label="Lighthouse Score" value="99" color="text-[#FF3B3B]" />
-                    <MetricRow label="Server Response Time" value="80ms" color="text-green-500" />
-                    <MetricRow label="Platform Weight" value="120KB" color="text-green-500" />
-                    <MetricRow label="Interactive Readiness" value="Instant" color="text-[#FF3B3B]" />
+                    <MetricRow label="Google SEO Score" value="99 / 100" color="text-[#FF3B3B]" />
+                    <MetricRow label="Page Load Time" value="0.2s (Instant)" color="text-green-500" />
+                    <MetricRow label="Mobile Experience" value="Smooth & Native" color="text-green-500" />
+                    <MetricRow label="Visitor Conversion" value="2.5x+ Boost" color="text-[#FF3B3B]" />
                   </div>
                 </motion.div>
               </div>
