@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export function PageTransition({ children }: { children: React.ReactNode }) {
   // Slower, more dramatic easing
   const duration = 1.5;
-  const easing = [0.83, 0, 0.17, 1]; // "ease in out cubic" feel, very dramatic
+  const easing: [number, number, number, number] = [0.83, 0, 0.17, 1];
 
   return (
     <>
