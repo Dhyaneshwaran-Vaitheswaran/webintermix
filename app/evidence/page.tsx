@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { GlassCard } from "@/components/ui/GlassCard";
+import { WebsiteTransformationSimulator } from "@/components/showcases/WebsiteTransformationSimulator";
 import Link from "next/link";
 
 // ── 4 CORE GUARANTEES ────────────────────────────────────────────────────────
@@ -128,6 +129,9 @@ export default function StandardPage() {
             ))}
           </div>
         </section>
+
+        {/* ── VISUAL BEFORE & AFTER TRANSFORMATION SIMULATOR ── */}
+        <WebsiteTransformationSimulator />
 
         {/* ── Why Legacy WordPress Fails vs Modern Next.js Matrix ── */}
         <section className="w-full mb-28">
