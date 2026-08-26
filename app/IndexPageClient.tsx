@@ -7,6 +7,8 @@ import { GlassCard } from "@/components/ui/GlassCard";
 import Image from "next/image";
 import { PerformanceComparison } from "@/components/showcases/PerformanceComparison";
 import { ResponsiveViewer } from "@/components/showcases/ResponsiveViewer";
+import { GoogleRankSimulator } from "@/components/showcases/GoogleRankSimulator";
+import { Interactive3DShowcase } from "@/components/showcases/Interactive3DShowcase";
 import { useCursorStore } from "@/stores/cursorStore";
 import { useCanvasStore } from "@/stores/canvasStore";
 import { RedAurora } from "@/components/canvas/RedAurora";
@@ -91,6 +93,8 @@ export function IndexPageClient() {
       {/* ── SHOWCASES ─────────────────────────────────────────────────────────── */}
       <PerformanceComparison />
       <ResponsiveViewer />
+      <GoogleRankSimulator />
+      <Interactive3DShowcase />
 
       {/* ── DYNAMIC SLIDESHOW ─────────────────────────────────────────────────── */}
       <section 
